@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>
+        COMP1521 25T3 —
+        
+Assignment 2: Awesome Image Format
+
+    </title><link rel="canonical" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/">
+
+    <link rel="stylesheet" href="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/bootstrap.min.css" integrity="sha256-aAr2Zpq8MZ+YA/D6JtRD3xtrwpEz2IqOS+pWD/7XKIw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/course.css">
+
+    <script src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/jquery.min.js.download" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/popper.min.js.download" integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" crossorigin="anonymous"></script>
+    <script src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/bootstrap.min.js.download" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
+
+    <script src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/course.js.download"></script>
+
+    <link rel="icon" type="image/png" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/flask.cgi/static/favicon.ico?21571757227708.7079437=">
+
+    <!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
+
+    <!-- MathJax. -->
+    
+
+    
+<link rel="stylesheet" href="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/bootstrap-toc.min.css">
+<!-- add after bootstrap.min.js -->
+<script src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/bootstrap-toc.min.js.download"></script>
+
+
+    
+<script type="text/javascript" async="" src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/MathJax.js.download"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body class="d-flex flex-column" style="min-height: 100vh;" data-new-gr-c-s-check-loaded="14.1263.0" data-gr-ext-installed=""><div id="MathJax_Message" style="display: none;"></div>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark no-print" id="header-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/">
+            COMP1521 - 25T3
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navmenu" aria-controls="navmenu" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav mr-auto">
+                
+                    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/outline/">
+                                Outline
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/timetable/">
+                                Timetable
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/help-sessions/">
+                                Help Sessions
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/resources/forum.html">
+                                Forum
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/student/">
+                                Submissions
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass1/index.html">
+                                Assignment 1
+                            </a>
+                        </li>
+                    
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html">
+                                Assignment 2
+                            </a>
+                        </li>
+                    
+                    
+                    
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="container" aria-label="Content" style="flex: 1; padding-top: 4rem;">
+    
+
+        <header>
+            
+                <h1 class="text-center">
+Assignment 2: Awesome Image Format
+</h1>
+            
+        </header>
+
+        
+<style>
+    h1::before,h2::before {
+      content: '';
+      display: block;
+      height:      50px;
+      margin-top: -50px;
+      visibility: hidden;
+    }
+
+    #toc {
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 70px;
+    }
+
+    main[aria-label="Content"] {
+        max-width: 70rem;
+    }
+</style>
+
+<div class="row" id="assignment-body">
+<div class="col-lg-10 col-12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="note">
+    <!-- <p>🚧 Construction Zone: Video Coming Soon 🚧</p> -->
+    <p>You may find the <a href="https://youtu.be/RK4PknuGF3g">Assignment 2 Overview Video</a> to be helpful</p>
+    <iframe width="560" height="315" src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/buphT1xKa0s.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+</aside>
+
+<div id="ass2-aif">
+
+<style>
+
+#ass2-aif table {
+    width: auto;
+    margin-bottom: 1em;
+    border: 1px solid lightgray;
+}
+
+#ass2-aif th,
+#ass2-aif td,
+#ass2-aif tr {
+    border: 1px solid lightgray;
+    padding: 0.5em 0.5em;
+    text-align: left;
+}
+
+.simple-table td {
+    height: 29px;
+    min-width: 120px;
+}
+
+.simple-table th {
+    height: 29px;
+    min-width: 120px;
+}
+
+</style>
+
+<h2 id="contents">Contents</h2>
+<ul>
+    <li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#getting-started">Getting Started</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#background">Background</a>
+    <ul>
+        <li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#how-display">How computers display images</a>
+        </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#color-depth">Color Depth</a>
+        </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#color-formats">Color Formats</a>
+        </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#storing-pixels">Storing Pixels</a>
+    </li></ul>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#format">AIF (Amazing Image Format) Format</a></li>
+        <ul>
+        <li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#magic">Magic</a>
+        </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#checksum">Checksum</a>
+        </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#pixel-format">Pixel Format</a>
+        </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#width-height">Width, Height</a>
+        </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#pixel-data-offset">Pixel Data Offset</a>
+    </li></ul>
+    <li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage0">Stage 0</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage1">Stage 1</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage2">Stage 2</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage3">Stage 3</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage4">Stage 4</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage5">Stage 5</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#reference">Reference Implementation</a>
+    </li><li><a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#handling-errors">Handling Errors</a>
+
+</li></ul>
+
+<h2 id="getting-started">Getting started</h2>
+<p>In this assignment you will implement a program to manipulate <strong>AIF</strong> (Amazing Image Format) files.</p>
+
+<p>
+Create a new directory for this assignment,
+change to this directory,
+and fetch the provided code by running
+</p>
+
+<pre is="tty"><kbd is="sh">mkdir -m 700 aif</kbd>
+<kbd is="sh">cd aif</kbd>
+<kbd is="sh">1521 fetch aif</kbd>
+</pre>
+
+<p>
+If you're not working at CSE,
+you can download the provided files
+as a <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/provided.zip">zip file</a>
+or a <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/provided.tar">tar file</a>.
+
+</p><p>
+This will give you the following files:
+
+</p><dl class="row">
+
+<dt class="col-3"><code>aif-tools.c</code></dt>
+<dd class="col-9">
+is the only file you need to change:
+it contains partial definitions of four functions,
+<em>stage1_info</em>, <em>stage2_brighten</em>,
+<em>stage3_convert_color</em>, <em>stage4_decompress</em>,
+and <em>stage5_compress</em>,
+to which you need to add code to complete the assignment.
+You can also add your own functions to this file.
+
+</dd><dt class="col-3"><code>aif-tools_main.c</code></dt>
+<dd class="col-9">
+contains a <em>main</em>,
+which has code to parse the command line arguments,
+and which then calls one of
+<em>stage1_info</em>, <em>stage2_brighten</em>,
+<em>stage3_convert_color</em>, <em>stage4_decompress</em>,
+and <em>stage5_compress</em>,
+depending on the command line arguments given to aif-tools.
+<em class="text-danger">Do not change this file.</em>
+
+</dd><dt class="col-3">
+<code>aif.h</code></dt>
+<dd class="col-9">
+contains shared function declarations
+and some useful constant definitions.
+<em class="text-danger">Do not change this file.</em>
+
+</dd><dt class="col-3"><code>aif.mk</code></dt>
+<dd class="col-9">
+contains a Makefile fragment for aif.
+</dd></dl>
+
+<p>
+You can run <cite><a title="man 1 make" href="https://manpages.debian.org/jump?q=make.1">make</a></cite> to compile the provided code into
+into an executable file called <code>aif-tools</code>:
+
+</p><pre is="tty"><kbd is="sh">make</kbd>
+dcc   aif-tools.c aif-tools_main.c -o aif
+<kbd is="sh">./aif-tools</kbd>
+Usage: aif-tools  &lt;info|brighten|compress &gt; file1 [...  &lt;file2 &gt;]
+</pre>
+
+<p>
+You may optionally create extra <code>.c</code> or <code>.h</code> files.
+If you create extra files, you must either modify the provided <code>aif.mk</code> fragment
+or compile your code manually.
+
+</p><p>
+You can run <code>1521 aif-examples</code> to get a directory
+called <code>aif-examples</code> full of example <em>.aif</em> to test your
+program with:
+</p>
+
+<pre is="tty"><kbd is="sh">1521 aif-examples</kbd>
+</pre>
+
+<p>
+You can run the reference solution with:
+</p>
+
+<pre is="tty"><kbd is="sh">1521 aif-tools</kbd>
+</pre>
+
+
+<h2 id="background">Background</h2>
+
+<h3 id="how-display">How computers display images</h3>
+<p>
+    <img alt="image.png" style="height: 16em;" src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/image.png">
+</p>
+
+<p>
+The same image at 200x200, 50x50 and 10x10 pixels.
+</p>
+
+<p>
+Images, like a computer screen, is arranged into a grid of ‘pixels’.
+Each pixel is assigned a color value and by combining these pixels you can form an image. The more pixels the more defined the image may look. </p>
+<p>When we refer to the <em>width</em> or the <em>height</em> of an image, we are generally referring to the number of pixels in each row and the number of pixels in each column. For example 640x500 means 640 columns and 500 rows of pixels.</p>
+
+<h3 id="color-depth">Color Depth</h3>
+<p>As computers have developed they have been able to display images of increasing <em>color depth.</em> Color depth refers to the amount of <em>bits</em> used to represent color where more bits = a bigger range of color values.</p>
+<p>The following 500x500 image at 8-bit rgb, 16 color (4-bit palette) and 4 color (2-bit palette) depths</p>
+<p><img alt="mr2comparison.png" style="height: 16em;" src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/mr2comparison.png"></p>
+<p>Notice how at lower (250x250) resolutions the difference is more pronounced.</p>
+<p><img alt="bridge-comparison.png" style="height: 16em;" src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/bridge-comparison.png"></p>
+<p>This is due to <em>dithering</em> where at a larger distance colors can merge together and combine!</p>
+
+<h3 id="color-formats">Color Formats</h3>
+<p>In this assignment you only have to worry about two ways of storing color.</p>
+<p><strong>8-bit RGB</strong></p>
+<p>One of the most common color formats where each pixel is made up of 8-bits of red, green and blue and can be stored as a 24-bit value. Each pixel is 3 bytes. Each pixel will look like <code>RR GG BB</code> in memory.</p>
+<p>By mixing red, green and blue we can make <code>2^24</code> different colors! For example <code>FF FF FF</code>  is white, <code>00 00 00</code> is black, <code>FF 00 00</code> would be a bright red and <code>FF FF 00</code> would be a bright yellow!</p>
+<p>Often web and graphic designers will work with colors in a hex format such as <code>#ff00ff</code> and these correspond to 8-bit RGB.</p>
+<p><strong>8-bit Grayscale</strong></p>
+<p>Each pixel is an 8-bit value where 0 is black, 255 is white and inbetween are shades of gray. Each pixel is 1 byte.</p>
+
+<h3 id="storing-pixels">Storing Pixels</h3>
+<p>When working with images, pixels are generally stored in rows of color values. Each row will be the at least the width of the image. </p>
+
+<h2 id="format">AIF (Amazing Image Format) Format</h2>
+<p>
+Each aif file contains the information that makes up an image.
+</p><p>
+Every aif file consists of a header, followed by pixel data.
+The format of the header is:
+</p><table class="table table-sm table-striped">
+<thead>
+<tr><th>name
+    </th><th>length
+    </th><th>offset
+    </th><th>type
+    </th><th>description
+</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">magic number
+    </th><td>4 <abbr title="byte">B</abbr>
+
+    </td><td>0 <abbr title="byte">B</abbr>
+
+    </td><td>characters sequence
+    </td><td>The magic number for <em>aif</em> files, which is the sequence of bytes
+        0x41, 0x49, 0x46, 0x00 (ASCII string: <code>"AIF\0"</code>).
+</td></tr><tr><th scope="row">checksum
+    </th><td>2 <abbr title="byte">B</abbr>
+
+    </td><td>4 <abbr title="byte">B</abbr>
+
+    </td><td>unsigned, 16-bit, little-endian
+    </td><td>The checksum computed when the <em>aif</em> file was created.
+</td></tr><tr><th scope="row">pixel format
+    </th><td>1 <abbr title="byte">B</abbr>
+
+    </td><td>6 <abbr title="byte">B</abbr>
+
+    </td><td>unsigned 8-bit value
+    </td><td>The format used to store pixels. See <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#pixel-format">pixel format</a>.
+</td></tr><tr><th scope="row">compression
+    </th><td>1 <abbr title="byte">B</abbr>
+
+    </td><td>7 <abbr title="byte">B</abbr>
+
+    </td><td>unsigned 8-bit value
+    </td><td>The compression used to store the image. See <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#compression">compression</a>.
+</td></tr><tr><th scope="row">width
+    </th><td>4 <abbr title="byte">B</abbr>
+
+    </td><td>8 <abbr title="byte">B</abbr>
+
+    </td><td>unsigned, 32-bit, little-endian
+    </td><td>The number of pixels (columns) in each row.
+</td></tr><tr><th scope="row">height
+    </th><td>4 <abbr title="byte">B</abbr>
+
+    </td><td>12 <abbr title="byte">B</abbr>
+
+    </td><td>unsigned, 32-bit, little-endian
+    </td><td>The to the number of rows.
+</td></tr><tr><th scope="row">pixel data offset
+    </th><td>4 <abbr title="byte">B</abbr>
+
+    </td><td>16 <abbr title="byte">B</abbr>
+
+    </td><td>unsigned, 32-bit, little-endian
+    </td><td>The offset (in bytes) from the start of the file where pixel data begins.
+</td></tr></tbody>
+</table>
+
+Offsets and widths for each of these header fields are defined
+for you in <code>aif.h</code>.
+
+<h3 id="magic">Magic</h3>
+<p>
+    Magic values are used to identify the format of a file and verify that the header
+    has not been corrupted. We use file extensions too
+    (e.g. <code>png</code> and <code>jpg</code> ), but magic fields allow a file format to be
+    identified even if this extension is missing or changed.
+</p>
+
+<h3 id="checksum">Checksum</h3>
+<p>The AIF format involves a simple checksum to make sure the image data is valid. A checksum is a value calculated from a larger piece of data (in our case an image) which can be used to check for corrupted data.</p>
+<p>We use a simple <em>Fletcher’s checksum</em> to verify our image. Its calculation works as follows:</p>
+<ol>
+<li>We have two sums, <em>sum1</em> and <em>sum2</em> start at 0 </li>
+<li>Assume the <em>checksum</em> value in the image header is 0</li>
+<li>Read in the first byte starting from the header</li>
+<li>Add the byte value to sum1 and take <code>sum1 % 256</code> </li>
+<li>Add the new value for sum1 to sum2 and take <code>sum2 % 256</code> </li>
+<li>Read in next byte and repeat until EOF</li>
+</ol>
+<p>Finally, we place both sum1 and sum2 in a 16-bit integer by left shifting sum2 by 8 and adding the two values together.</p>
+
+<h3 id="pixel-format">Pixel Format</h3>
+<p>
+<em>aif</em> files support the following pixel formats:
+</p><ul>
+<li><p>
+<code>AIF_FMT_RGB8</code> - Each pixel is a 24-bit RGB value</p>
+</li><li><p>
+<code>AIF_FMT_GRAY8</code>  - Each pixel is an 8-bit shade of gray</p>
+</li></ul>
+These are defined in <code>aif.h</code>.
+
+<h4 id="compression">Compression</h4>
+<p>
+<em>aif</em> files support the following compression types:
+</p><ul>
+<li><p>
+<code>AIF_COMPRESSION_NONE</code> - Uncompressed</p>
+</li><li><p>
+<code>AIF_COMPRESSION_RLE</code>  - RLE (Run length encoding compression, see below)</p>
+</li></ul>
+These are defined in <code>aif.h</code>.
+
+<h3 id="width-height">Width, Height</h3>
+<p><strong>width</strong> refers to the number of pixels (columns) in each row</p>
+<p><strong>height</strong> refers to the number of rows</p>
+<p>The <strong>width</strong> and <strong>height</strong> must both be positive integers.</p>
+
+<h3 id="pixel-data-offset">Pixel Data Offset</h3>
+<p>How many bytes from the start of the file the pixel data begins.</p>
+
+<h2 id="view">Viewing AIF Images</h2>
+
+<p>Run <code>1521 aif-convert</code>  to convert an AIF image to a PNG and have a look at what your program did!</p>
+<p></p><pre is="tty">$ 1521 aif-convert aif-examples/cat.aif </pre><p></p>
+<p>You can then open this png in vscode!</p>
+
+<h2 id="stage0">Stage 0</h2>
+<h3 id="get-information-about-given-image-files">Get Information About Given Image Files</h3>
+<p>
+In stage 0 you will need to partially complete the provided
+<code>stage1_info</code> function.
+</p>
+<p>
+The <code>stage1_info</code> is given a number of files, <code>n_files</code>,
+and a an array of <em>aif</em> filenames <code>files</code>.
+</p>
+<p>
+For each aif file in the <code>files</code> array you should print out
+information in the following format:
+</p>
+
+<p>
+</p><pre is="tty">&lt;aif-examples/cat.aif&gt;:
+File-size: 120020 bytes
+Checksum: 7c 9c
+Pixel format: 8-bit RGB
+Compression: none
+Width: 200 px
+Height: 200 px</pre>
+<p></p>
+<aside class="hint">
+    <ul class="list-unstyled">
+        <li><p>
+            Use <cite><a title="man 3 fopen" href="http://man7.org/linux/man-pages/man3/fopen.3.html">fopen</a></cite> to open the <em>aif</em> files for reading.
+
+        </p></li><li><p>
+            Use <cite><a title="man 3 fgetc" href="http://man7.org/linux/man-pages/man3/fgetc.3.html">fgetc</a></cite> and/or <cite><a title="man 3 fread" href="http://man7.org/linux/man-pages/man3/fread.3.html">fread</a></cite> to read bytes from the input files.
+
+        </p></li><li><p>
+            Use <cite><a title="man 2 stat" href="http://man7.org/linux/man-pages/man2/stat.2.html">stat</a></cite> to get the size of each input file. In particular, you may find the <code>st_size</code>
+            field of the <code>struct stat</code> useful. You may find <cite><a title="man 7 inode" href="http://man7.org/linux/man-pages/man7/inode.7.html">inode</a></cite> to be a useful source of
+            documentation for the <code>struct stat</code> fields.
+
+        </p></li><li><p>
+            Use C bitwise operations such as <code>&lt;&lt;</code> <code>&amp;</code> and <code>|</code> to combine bytes into
+            little endian integers. You may find it useful to write a helper function to do this, as you will need to do this
+            in later subsets.
+
+        </p></li><li><p>
+            Make sure you understand the <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#format">format</a> of the aif files.
+
+</p></li><li><p>
+    Think carefully about the functions you can construct to avoid repeated code.
+</p></li></ul>
+</aside>
+
+<!-- <aside class="note">
+    <ul class="list-unstyled">
+    <li><p>You may assume any paths in <code>in_pathnames</code> are either regular
+    files or do not exist.
+    <li><p>
+    </ul>
+</aside> -->
+
+<!-- =============================================================== -->
+<h2 id="stage1">Stage 1</h2>
+<p>
+In stage 1 you need complete the <code>stage1_info</code> function by verifying
+that the information in the given files is valid.
+</p><p>
+You will need to verify that
+the magic number,
+the width and height,
+the pixel format, and,
+the image checksum
+are all correct.
+
+</p><p>
+A valid magic number is the sequence of  bytes 0x41, 0x49, 0x46, 0x00 or
+string <code>"AIF\0"</code>
+
+</p><p>
+The <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#width-height">width and height</a> are valid if they are greater than 0.
+
+</p><p>
+The pixel format is valid if it is a recognised aif pixel format.
+Valid pixel formats are listed <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#pixel-format">here</a>.
+
+</p><p>
+The <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#checksum">checksum</a> is valid if the checksum you calculate
+matches the checksum stored in the aif file.
+
+</p><p>
+If any of the above are invalid, a message should be printed
+in the format below:
+</p><p></p><pre is="tty"><kbd is="sh">1521 aif-tools info aif-examples/invalid-width.aif aif-examples/invalid-format.aif  aif-examples/invalid-checksum.aif</kbd>
+&lt;aif-examples/invalid-width.aif&gt;:
+File-size: 20 bytes
+Checksum: d9 e7
+Pixel format: 8-bit RGB
+Compression: none
+Width: 0 px INVALID
+Height: 2 px
+&lt;aif-examples/invalid-format.aif&gt;:
+File-size: 24 bytes
+Checksum: 5d 2d
+Pixel format: Invalid
+Compression: none
+Width: 2 px
+Height: 2 px
+&lt;aif-examples/invalid-checksum.aif&gt;:
+File-size: 320 bytes
+Checksum: 67 67 INVALID, calculated 5d f9
+Pixel format: 8-bit RGB
+Compression: none
+Width: 10 px
+Height: 10 px
+</pre><p></p>
+<aside class="hint">
+    <ul class="list-unstyled">
+        <li><p>
+            Make sure you understand the <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#format">format</a> of the aif files.
+
+        </p></li><li><p>
+            You will need to compute the checksum for each file.
+            To compute the checksum, you will need to read each byte from the file
+            and apply the checksum procedure described <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#checksum">here</a>.
+
+        </p></li><li><p>
+            Think carefully about the functions you can construct to avoid repeated code.
+    </p></li></ul>
+</aside>
+
+<!-- =============================================================== -->
+<h2 id="stage2">Stage 2</h2>
+<h3 id="accessing-pixel-data">Accessing Pixel Data</h3>
+<p>Pixel data is stored in <em>rows</em> meaning you access the pixels across. Carefully consider how you read and write pixel data to make accessing different color formats and compressed/uncompressed images easier!</p>
+<p>You do not have to deal with compression until <em>stage 4</em> and <em>stage 5</em>.</p>
+<h3 id="adjust-image-brightness">Adjust image brightness</h3>
+<p>In this subset take the given image and brighten it by a given percentage.</p>
+<p></p><pre is="tty">$ ./aif-tools brighten +20 cat.aif bright-cat.aif</pre><p></p>
+<p></p><pre is="tty">$ ./aif-tools brighten -15 cat.aif dark-cat.aif</pre><p></p>
+<p>For any given ‘RGB’ color it can be useful to find the chroma (how deep the color is) and the luminance (how bright the color is). By finding and manipulating this luminance we can brighten or darken the image!</p>
+<p>Luckily, this is done for you, in <code>brighten_rgb</code> , however you should read below to see how it works! The color value is passed as a 24-bit integer and a new adjusted color value is returned.</p>
+<p></p><pre is="c">uint32_t old_pixel = ...
+uint32_t new_pixel = brighten_rgb(old_pixel, amount);
+// write the new pixel to the output image...</pre><p></p>
+<p>For gray images we can just do <code>pixel * (100 + amount) / 100</code> . However, you must make sure if the color value overflows (goes above 255) that it gets capped to 255.</p>
+<p><strong>brighten_rgb</strong></p>
+<p>To brighten or darken an RGB color, we must split each pixel into its color components (r, g, b). For a gray image we can ignore this step. </p>
+<p>We then get the midpoint of the brightest and darkest color component:</p>
+<p></p><pre is="c">// For an rgb image
+r = pixel[0];
+g = pixel[1];
+b = pixel[2];
+lightest = max(r, g, b)
+darkest = min(r, g, b)
+luminance = (brightest + darkest) / 2<p></p>
+// For a gray image
+uint8_t pixel;
+luminance = pixel;
+</pre><p></p>
+<p>We then get the ‘chroma’ (intensity of the color) by subtracting the brightest and darkest</p>
+<p><code>
+chroma = brightest - darkest</code></p>
+<p>We can then use luminance and chroma to find the base ‘lightness’ of the color. This ‘lightness’ is a constant value added to each r, g, b component. We can find it as such:</p>
+<p><code>
+lightness = luminance - chroma / 2</code></p>
+<p>By manipulating the luminance value we increase or decrease this constant ‘lightness’ and can brighten and darken the color!</p>
+
+<!-- =============================================================== -->
+<h2 id="stage3">Stage 3</h2>
+<h3 id="convert-between-colour-formats">Convert between colour formats</h3>
+<div class="image"><img alt="image.png" src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/image 1.png">
+<img alt="image.png" src="./COMP1521 25T3 — Assignment 2_ Awesome Image Format_files/image 2.png"></div>
+<p><strong>Convert the image to grayscale</strong></p>
+<code>
+$ ./aif-tools convert-color gray8 cat.aif cat-gray8.aif
+</code>
+<p><strong>Converting from RGB to Grayscale</strong></p>
+<p>When we want to convert an RGB color value to grayscale, its not at simple as just taking the average of the red green and blue values. The eye perceives green to be brighter than blue and we need to take this into account when converting to gray.</p>
+<p>This gives us the following formula to calculate the <em>luma</em> of a given RGB color.</p>
+<p></p><pre is="c">red = pixel[0]
+green = pixel[1]
+blue = pixel[2]
+gray = (red * 299 + green * 587 + blue * 114) / 1000
+</pre><p></p>
+<p>This will become our new 1-byte pixel value!</p>
+<p><strong>Converting from 8-bit grayscale to RGB</strong></p>
+<p>In order to convert back, we can just duplicate a given value across red, green and blue.</p>
+<p><code>GG -&gt; GG GG GG</code> </p>
+<p>i.e. A value of 128 (0x80) will become <code>80 80 80</code> .</p>
+<pre is="c">red = gray
+green = gray
+blue = gray
+pixel = {red, green, blue}
+</pre>
+
+<!-- =============================================================== -->
+<h2 id="stage4">Stage 4</h2>
+<h3 id="run-length-encoding-decompression">Run-length encoding decompression</h3>
+<p>Decompress the provided image file.</p>
+<p></p><pre is="tty">./aif-tools decompress cat-compressed.aif cat.aif</pre><p></p>
+<p>To compress AIF images we use a simple compression method called <em>run-length encoding.</em> In subset 4 you only need to worry about decompression.</p>
+<p>RLE involves simply specifying a number of times to repeat the following sequence of bytes. This looks like the following:</p>
+<pre>[NNNN] [XX] pixel_value_repeated
+[NNNN] [00] [XX] pixel_value00 pixel_value01 ... pixel_value(XX-1)<p></p>
+NNNN - number of bytes in row
+XX - number of pixels
+pixel_value_repeated - pixel repeated XX times
+pixel_value00 ... pixel_value(XX-1) - part of a non-repeating sequence of pixels
+</pre>
+<p>For example, with an rgb image we have 3 bytes per pixel. For the following pixel values (as hex numbers):</p>
+<p></p><pre>000000  000000  000000  ff5555  ff5555  fcfcfc  000000  670067</pre><p></p>
+<p>First of all we need to give the number of total <em>bytes</em> in the row. We can leave this as zero now and come back to it once we are done.</p>
+<p>You can see that <code>00 00 00</code> is repeated 3 times, so this becomes <code>03 00 00 00</code> meaning we want to repeat the color <code>00 00 00</code> (black) 3 times!</p>
+<p></p><pre>00 00 03 00 00 00</pre><p></p>
+<p>Then we repeat <code>ff 55 55</code> twice giving <code>02 ff 55 55</code>.</p>
+<p></p><pre>00 00 03 00 00 00 02 ff 55 55</pre><p></p>
+    <p>As you can see the next 3 pixels do <strong>not</strong> repeat, so we use zero to indicate no repeating. We have <code>3</code> non-repeating pixels giving us <code>00 03  fc fc fc  00 00 00  67 00 67</code> .</p>
+<p></p><pre>00 00 03 00 00 00 02 ff 55 55 00  03 fc fc fc  00 00 00  67 00 67</pre><p></p>
+    <p>We have now written <code>0x13</code> (19) bytes so we write it (as a little endian value <code>13 00</code>) giving us our final row:</p>
+<p></p><pre>13 00 03 00 00 00 02 ff 55 55 00 03 fc fc fc 00 00 00 67 00 67</pre><p></p>
+<p>As you might notice this works great for simple images, such as graphics and screenshots but often actually increases the file-size of most normal photos! More advanced formats have varying ways of dealing with this, such as JPEG which can reduce image detail in order to greatly improve compression.</p>
+<p>
+You are <em>not</em> required to check for invalid sequences when decompressing. You should however continue to verify the header as in previous subsets, and check for early end-of-file.
+</p>
+
+<!-- =============================================================== -->
+<h2 id="stage5">Stage 5</h2>
+<h3 id="rle-compression">RLE Compression</h3>
+<p>Implement RLE compression for AIF images.</p>
+<p></p><pre is="tty">$ ./aif-tools compress cat.aif cat-compressed.aif</pre><p></p>
+<p><strong>Assumptions</strong></p>
+<ul>
+<li>A single pixel value should be encoded with <code>00 01 &lt;pixel&gt;</code> , i.e. a single <code>00 00 FF</code> becomes <code>00 01 00 00 FF</code></li>
+<li>If a sequence of pixels exceeds 255, write <code>255 &lt;pixel&gt;</code> and start a new sequence</li>
+<li>Rows will not exceed 65535 bytes.</li>
+</ul>
+<h3 id="update-subsets-2-and-3-to-support-compression">Update subsets 2 and 3 to support compression</h3>
+<p>Update subsets 2 and 3 to support compressed images. If the input is compressed the output should also be compressed.</p>
+
+<h2 id="reference">Reference Implementation</h2>
+<p>
+    A reference implementation is
+    a common, efficient, and effective method
+    to provide or define an operational specification;
+    and it's something you will likely work with
+    after you leave UNSW.
+
+</p><p>
+    We've provided a reference implementation,
+    <code>1521 aif-tools</code>,
+    which you can use to find
+    the correct outputs and behaviours for any input:
+
+</p><pre is="tty"><kbd is="sh">1521 aif-examples</kbd>
+<kbd is="sh">cd aif-examples</kbd>
+<kbd is="sh">1521 aif-tools info cat.aif</kbd>
+<cat.aif>:
+File-size: 120020 bytes
+Checksum: 7c 9c
+Pixel format: 8-bit RGB
+Compression: none
+Width: 200 px
+Height: 200 px
+</cat.aif></pre>
+
+<p>
+Every concrete example shown above is runnable using the reference;
+run <code>1521 aif-tools</code> instead of <code>./aif-tools</code>.
+
+</p><p>
+Where any aspect of this assignment
+is undefined in this specification,
+you should match the behaviour
+exhibited by the reference implementation.
+Discovering and matching
+the reference implementation's behaviour
+is deliberately a part of this assignment.
+
+</p><p>
+If you discover what you believe to be
+a bug in the reference implementation,
+please report it in the class forum.
+If it is a bug, we may fix the bug;
+or otherwise indicate that
+you do not need to match
+the reference implementation's behaviour
+in that specific case.
+
+<!-- =============================================================== -->
+</p><h2 id="handling-errors">Handling Errors</h2>
+<ul>
+<li>Error checking is an important part of this assignment. Automarking will test error handling.</li>
+<li>You should exactly match the reference solution's error messages</li>
+<li>Error messages should be one line and be written to stderr (not stdout).</li>
+<li>aif-tools should exit with status 1 after an error.</li>
+<li>You do not have to free memory or close files before exiting in the event of an error.</li>
+<li>aif-tools should check all file operations for errors.</li>
+<li>You cannot assume the provided AIF images are valid. You should print an appropriate error and exit with status 1 in the following cases:</li>
+<ul>
+<li>The provided AIF file has an incorrect magic number.</li>
+<li>The provided AIF file has an invalid pixel format.</li>
+<li>The provided AIF file has an invalid compression type.</li>
+<li>The provided AIF file has an invalid height.</li>
+<li>The provided AIF file has an invalid width.</li>
+<li>The provided AIF file has an invalid checksum.</li>
+<li>The provided AIF file does not contain enough bytes: EOF is encountered while reading the header.</li>
+<li>The provided AIF file does not contain enough bytes: EOF is ecountered while reading pixel data.</li>
+</ul>
+<li>The state of or presence of an output file will not be checked if an error occurs.</li>
+<li>For stage 1, the only additional error checking required is that the input file is successfully opened and no unexpected EOF are encountered
+    while reading the header data. Invalid header fields should be reported to stdout as the autotests enforce
+    and no early termination should be performed.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+<h2 id="assessment" class="mt-5">Assessment</h2>
+
+
+
+<h3 id="assessment--testing">Testing</h3>
+<p>
+When you think your program is working,
+you can use <code>autotest</code>
+to run some simple automated tests:
+</p><p>
+
+</p><pre is="tty"><kbd is="sh">1521 autotest aif <var>[optionally: any extra .c or .h files]</var></kbd>
+</pre>
+You can also run autotests for a specific subset. For example, to run all tests from
+subset 1:
+<pre is="tty"><kbd is="sh">1521 autotest aif stage1 <var>[optionally: any extra .c or .h files]</var></kbd>
+</pre>
+Some tests are more complex than others. If you are failing more than one test,
+you are encouraged to focus on solving the first of those failing tests. To do so,
+you can run a specific test by giving its name to the <code>autotest</code> command:
+<pre is="tty"><kbd is="sh">1521 autotest aif stage1-1 <var>[optionally: any extra .c or .h files]</var></kbd>
+</pre>
+
+
+
+
+
+<p>
+<code>1521 autotest</code> will not test everything.<br>
+Always do your own testing.
+</p><p>
+Automarking will be run by the lecturer after the submission deadline,
+using a superset of tests to those <code>autotest</code> runs for you.
+
+</p><aside class="warning">
+
+<p>
+Whilst we can detect errors have occurred,
+it is often substantially harder
+to automatically explain what that error was.
+As you continue into later subsets.
+the errors from <code>1521 autotest</code>
+will become less and less clear or useful.
+You will need to do your own debugging and analysis.
+</p>
+</aside>
+
+
+
+
+<h3 id="assessment--submission">Submission</h3>
+<p>
+When you are finished working on the assignment,
+you must submit your work by running <code>give</code>:
+
+
+</p><pre is="tty"><kbd is="sh">give cs1521 ass2_aif aif-tools.c</kbd>
+</pre>
+
+
+<p>
+You must run <code>give</code> before <strong>Week 10 Friday 18:00:00</strong>
+to obtain the marks for this assignment.
+Note that this is an individual exercise,
+the work you submit with <code>give</code> must be entirely your own.
+
+</p><p>
+You can run <code>give</code> multiple times.<br>
+Only your last submission will be marked.
+
+</p><p>
+If you are working at home, you may find it more convenient
+to upload your work via
+<a href="https://cgi.cse.unsw.edu.au/~give/Student/give.php">give's web interface</a>.
+
+</p><p>
+You <em>cannot</em> obtain marks by emailing your code to tutors or lecturers.
+
+</p><p>
+You can check your latest submission on CSE servers with:
+</p><pre is="tty"><kbd is="sh">1521 classrun check ass2_aif</kbd>
+</pre>
+
+<p>
+You can check the files you have submitted <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/student/">here</a>.
+
+</p><p>
+Manual marking will be done by your tutor,
+who will mark for style and readability,
+as described in the <strong>Assessment</strong> section below.
+After your tutor has assessed your work,
+you can <a href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/student/">view your results here</a>;
+The resulting mark will also be available
+<a href="https://cgi.cse.unsw.edu.au/~give/Student/sturec.php">via give's web interface</a>.
+
+
+
+
+</p><h3 id="assessment--due-date" class="mt-5">Due Date</h3>
+<p>
+This assignment is due <strong>Week 10 Friday 18:00:00</strong> (2025-11-21 18:00:00).
+</p><p>
+The UNSW standard late penalty for assessment is 5% per day for 5 days - this is implemented hourly for this assignment.
+</p><p>
+Your assignment mark will be reduced by 0.2% for each hour (or part thereof) late past the submission deadline.
+</p><p>
+For example,
+if an assignment worth 60% was submitted half an hour late,
+it would be awarded 59.8%, whereas if it was submitted past 10 hours late,
+it would be awarded 57.8%.
+</p><p>
+Beware - submissions 5 or more days late will receive zero marks.
+This again is the UNSW standard assessment policy.
+
+
+
+</p><h3 id="assessment--assessment-scheme" class="mt-5">Assessment Scheme</h3>
+<p>
+This assignment will contribute
+<strong>15</strong> marks
+to your final COMP1521 mark.
+</p><p>
+80% of the marks for assignment 2
+will come from the performance of your code
+on a large series of tests.
+</p><p>
+20% of the marks for assignment 2
+will come from hand marking.
+These marks will be awarded on the basis of
+clarity, commenting, elegance and style.
+In other words, you will be assessed on
+how easy it is for a human to read and understand your program.
+</p>
+
+<p>
+An indicative assessment scheme for performance follows.
+The lecturer may vary the assessment scheme
+after inspecting the assignment submissions,
+but it is likely to be broadly similar to the following:
+</p>
+<table class="table table-sm w-75 mx-auto">
+<tbody>
+<tr><th scope="row">100% for performance
+</th><td>completely working subsets 1, 2, 3, 4 &amp; 5 - everything works!
+</td></tr><tr><th scope="row">90% for performance
+</th><td>completely working subsets 1, 2, 3 &amp; 4.
+</td></tr><tr><th scope="row">80% for performance
+</th><td>completely working subsets 1, 2 &amp; 3    
+</td></tr><tr><th scope="row">65% for performance
+</th><td>completely working subsets 1 &amp; 2.
+</td></tr><tr><th scope="row">50% for performance
+</th><td>completely working subset 1.
+</td></tr><tr><th scope="row">30-40% for performance
+</th><td>good progress, but not passing subset 1 autotests.
+</td></tr><tr><th scope="row">0%
+    </th><td>knowingly providing your work to anyone <br>
+        and it is subsequently submitted (by anyone).
+</td></tr><tr><th scope="row">0 FL for <br> COMP1521
+    </th><td>submitting any other person's work; <br>
+        this includes joint work.
+</td></tr><tr><th scope="row">academic <br> misconduct
+    </th><td>submitting another person's work without their consent;<br>
+        paying another person to do work for you.
+</td></tr></tbody>
+</table>
+
+<p>
+An indicative assessment scheme for style follows.
+The lecturer may vary the assessment scheme
+after inspecting the assignment submissions,
+but it is likely to be broadly similar to the following:
+</p>
+<table class="table table-sm w-75 mx-auto">
+<tbody>
+    <tr>
+        <th scope="row">100% for style</th>
+        <td>perfect style</td>
+    </tr>
+    <tr>
+        <th scope="row">90% for style</th>
+        <td>great style, almost all style characteristics perfect.</td>
+    </tr>
+    <tr>
+        <th scope="row">80% for style</th>
+        <td>good style, one or two style characteristics not well done.</td>
+    </tr>
+    <tr>
+        <th scope="row">70% for style</th>
+        <td>good style, a few style characteristics not well done.</td>
+    </tr>
+    <tr>
+        <th scope="row">60% for style</th>
+        <td>ok style, an attempt at most style characteristics.</td>
+    </tr>
+    <tr>
+        <th scope="row">≤ 50% for style</th>
+        <td>an attempt at style.</td>
+    </tr>
+</tbody>
+</table>
+<p>
+An indicative style rubric follows:
+</p>
+<ul>
+    <li>
+        Formatting <strong>(6/20)</strong>:
+        <ul>
+            <li>Whitespace (<abbr>e.g.</abbr> <code>1 + 2</code> instead of <code>1+2</code>)</li>
+            <li>Indentation (consistent, tabs or spaces are okay)</li>
+            <li>Line length (below 80 characters unless very exceptional)</li>
+            <li>Line breaks (using vertical whitespace to improve readability)</li>
+        </ul>
+    </li>
+    <li>
+        Documentation <strong>(8/20)</strong>:
+        <ul>
+            <li>Header comment (with name and zID)</li>
+            <li>Function comments (above each function with a good description)</li>
+            <li>Descriptive variable names (<abbr>e.g.</abbr> <code>char *home_directory</code> instead of <code>char *h</code>)</li>
+            <li>Descriptive function names (<abbr>e.g.</abbr> <code>get_home_directory</code> instead of <code>get_hd</code>)</li>
+            <li>Sensible commenting throughout the code (don't comment every single line; leave comments when necessary)</li>
+        </ul>
+    </li>
+    <li>
+        Elegance <strong>(5/20)</strong>:
+        <ul>
+            <li>Does this code avoid redundancy? (<abbr>e.g.</abbr> <a target="_blank" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don't repeat yourself!</a>)
+            </li><li>Are helper functions used to reduce complexity? (functions should be small and simple where possible)
+            </li><li>Are constants appropriately created and used? (magic numbers should be avoided)
+        </li></ul>
+    </li>
+    <li>
+        Portability <strong>(1/20)</strong>:
+        <ul>
+            <li>Would this code be able to compile and behave as expected on other POSIX-compliant machines? (using standard libraries without platform-specific code)</li>
+            <li>Does this code make any assumptions about the endianness of the machine it is running on?</li>
+        </ul>
+    </li>
+</ul>
+<p>
+Note that the following penalties apply to your total mark for plagiarism:
+</p>
+<table class="table table-sm w-75 mx-auto">
+<tbody>
+    <tr>
+        <th scope="row">0 for asst2</th>
+        <td>knowingly providing your work to anyone <br> and it is subsequently submitted (by anyone).</td>
+    </tr>
+    <tr>
+        <th scope="row">0 FL for <br> COMP1521</th>
+        <td>submitting any other person's work; this includes joint work.</td>
+    </tr>
+    <tr>
+        <th scope="row">academic <br> misconduct</th>
+        <td>submitting another person's work without their consent;<br> paying another person to do work for you.</td>
+    </tr>
+</tbody>
+</table>
+
+
+
+
+<h3 id="assessment--intermediate-versions-of-work" class="mt-5">Intermediate Versions of Work</h3>
+<p>
+You are required to submit intermediate versions of your assignment.
+</p><p>
+Every time you work on the assignment
+and make some progress
+you should copy your work to your CSE account
+and submit it using the <code>give</code> command above.
+It is fine if intermediate versions do not compile
+or otherwise fail submission tests.
+Only the final submitted version of your assignment will be marked.
+
+
+
+</p><h3 id="assignment-conditions" class="mt-5">Assignment Conditions</h3>
+<ul>
+<li><p>
+<strong>Joint work</strong> is <strong>not permitted</strong> on this assignment.
+</p><p>
+This is an individual assignment.
+The work you submit must be entirely your own work:
+submission of work even partly written by
+any other person is not permitted.
+
+</p><p>
+Do not request help from anyone
+other than the teaching staff of COMP1521 —
+for example, in the course forum, or in help sessions.
+
+</p><p>
+Do not post your assignment code to the course forum.
+The teaching staff can view code
+you have recently submitted with give,
+or recently autotested.
+
+</p><p>
+Assignment submissions are routinely examined
+both automatically and manually
+for work written by others.
+
+</p><p>
+<em>Rationale:</em>
+this assignment is designed to
+develop the individual skills needed
+to produce an entire working program.
+Using code written by, or taken from, other people
+will stop you learning these skills.
+Other CSE courses focus on skills needed for working in a team.
+
+</p></li><li><p>
+</p><p>
+The use of generative tools such as Github Copilot, ChatGPT, Google Gemini
+is <strong>not permitted</strong> on this assignment.
+
+</p><p>
+<em>Rationale:</em>
+this assignment is designed to develop your understanding of basic concepts.
+Using synthesis tools will stop you learning these fundamental concepts,
+which will significantly impact your ability to complete future courses.
+
+</p></li><li><p>
+<strong>Sharing, publishing, or distributing</strong>
+your assignment work is <strong>not permitted</strong>.
+
+</p><p>
+Do not provide or show your assignment work to any other person,
+other than the teaching staff of COMP1521.
+For example, do not message your work to friends.
+
+</p><p>
+Do not publish your assignment code via the Internet.
+For example, do not place your assignment in a public GitHub repository.
+
+</p><p>
+<em>Rationale:</em>
+by publishing or sharing your work,
+you are facilitating other students using your work.
+If other students find your assignment work
+and submit part or all of it as their own work,
+you may become involved in an academic integrity investigation.
+
+</p></li><li><p>
+<strong>Sharing, publishing, or distributing</strong>
+your assignment work
+after the completion of COMP1521
+is <strong>not permitted</strong>.
+
+</p><p>
+For example, do not place your assignment in a public GitHub repository
+after this offering of COMP1521 is over.
+
+</p><p>
+<em>Rationale:</em>
+COMP1521 may reuse assignment themes
+covering similar concepts and content.
+If students in future terms find your assignment work
+and submit part or all of it as their own work,
+you may become involved in an academic integrity investigation.
+</p></li></ul>
+
+<p>
+Violation of any of the above conditions
+may result in an academic integrity investigation,
+with possible penalties
+up to and including a mark of 0 in COMP1521,
+and exclusion from future studies at UNSW.
+For more information,
+read the <a href="https://www.gs.unsw.edu.au/policy/documents/studentcodepolicy.pdf">UNSW Student Code</a>,
+or contact <a href="mailto:cs1521@cse.unsw.edu.au">the course account</a>.
+
+
+
+</p></div> <!-- big col -->
+<div class="d-none d-lg-block col-lg-2">
+    <nav id="toc" data-toggle="toc"><ul class="nav navbar-nav"><li><a class="nav-link active" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#contents">Contents</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#getting-started">Getting started</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#background">Background</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#how-display">How computers display images</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#color-depth">Color Depth</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#color-formats">Color Formats</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#storing-pixels">Storing Pixels</a></li></ul></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#format">AIF (Amazing Image Format) Format</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#magic">Magic</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#checksum">Checksum</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#pixel-format">Pixel Format</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#width-height">Width, Height</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#pixel-data-offset">Pixel Data Offset</a></li></ul></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#view">Viewing AIF Images</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage0">Stage 0</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#get-information-about-given-image-files">Get Information About Given Image Files</a></li></ul></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage1">Stage 1</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage2">Stage 2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#accessing-pixel-data">Accessing Pixel Data</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#adjust-image-brightness">Adjust image brightness</a></li></ul></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage3">Stage 3</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#convert-between-colour-formats">Convert between colour formats</a></li></ul></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage4">Stage 4</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#run-length-encoding-decompression">Run-length encoding decompression</a></li></ul></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#stage5">Stage 5</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#rle-compression">RLE Compression</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#update-subsets-2-and-3-to-support-compression">Update subsets 2 and 3 to support compression</a></li></ul></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#reference">Reference Implementation</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#handling-errors">Handling Errors</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#assessment">Assessment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#assessment--testing">Testing</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#assessment--submission">Submission</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#assessment--due-date">Due Date</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#assessment--assessment-scheme">Assessment Scheme</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#assessment--intermediate-versions-of-work">Intermediate Versions of Work</a></li><li><a class="nav-link" href="https://cgi.cse.unsw.edu.au/~cs1521/25T3/assignments/ass2/index.html#assignment-conditions">Assignment Conditions</a></li></ul></li></ul></nav>
+</div>
+
+</div> <!-- big row -->
+
+<script>
+    $(function() {
+    var navSelector = "#toc";
+    var $myNav = $(navSelector);
+    Toc.init($myNav);
+    $("body").scrollspy({
+      target: navSelector
+    });
+  });
+
+// This code ensures the ToC will also change tabs as necessary.
+
+window.addEventListener('hashchange', () => accessRightSection());
+async function accessRightSection() {
+    const id =  `#subsets_${location.hash.split(".")[0].split('#')[1]}`;
+    const tabButton = document.querySelector(`a.nav-link[href="${id}"][role="tab"]`);
+    if (tabButton) {
+        tabButton.click();
+        tabButton.scrollIntoView();
+        await new Promise(r => setTimeout(r, 200));
+        window.location.assign(location.hash);
+    }
+}
+</script>
+
+
+
+
+    
+</main>
+<footer class="mt-3 pt-3 bg-dark text-center no-print">
+    <p class="text-muted">
+        <strong>COMP1521 25T3: Computer Systems Fundamentals</strong>
+        is brought to you by <br>
+        the <a href="https://www.cse.unsw.edu.au/">School of Computer Science and Engineering</a><br>
+        at the <a href="https://www.unsw.edu.au/">University of New South Wales</a>, Sydney.<br>
+        For all enquiries, please email the class account at
+        <a href="mailto:cs1521@cse.unsw.edu.au">cs1521@cse.unsw.edu.au</a><br>
+
+        <small>CRICOS Provider 00098G</small>
+    </p>
+
+    
+</footer>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
