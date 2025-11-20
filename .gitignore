@@ -1,0 +1,13 @@
+# Compiled binaries
+aif-tools
+
+# Test files
+*.aif
+
+# Object files
+*.o
+
+# Other build artifacts
+*.a
+*.so
+*.dylib
