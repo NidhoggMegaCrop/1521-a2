@@ -1,21 +1,96 @@
 #include "aif.h"
 #include <stdint.h>
 #include <stdio.h>
+#include <sys/stat.h>
+#include <stdlib.h>
 
 // Takes in a RGB color and brightens it by the given percentage amount
 uint32_t brighten_rgb(uint32_t color, int amount);
 
-void stage1_info(int n_files, const char **files) {
-    // Remember to look at the constants and helper functions we have provided you
-    // in aif.h and good luck!
+// Helper function to read a little-endian 16-bit value
+uint16_t read_le16(FILE *fp) {
+    uint8_t bytes[2];
+    fread(bytes, 1, 2, fp);
+    return bytes[0] | (bytes[1] << 8);
+}
 
-    printf("<%s>:\n", "duck.aif");
-    printf("File-size: %ld bytes\n", 67l);
-    printf("Checksum: %02x %02x\n", 0xbe, 0xef);
-    printf("Pixel format: %s\n", "take a look at the helper functions in aif.h");
-    printf("Compression: %s\n", "same here");
-    printf("Width: %d px\n", 1337);
-    printf("Height: %d px\n", 42);
+// Helper function to read a little-endian 32-bit value
+uint32_t read_le32(FILE *fp) {
+    uint8_t bytes[4];
+    fread(bytes, 1, 4, fp);
+    return bytes[0] | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
+}
+
+void stage1_info(int n_files, const char **files) {
+    for (int i = 0; i < n_files; i++) {
+        const char *filename = files[i];
+
+        // Get file size using stat
+        struct stat file_stat;
+        if (stat(filename, &file_stat) != 0) {
+            fprintf(stderr, "Error: could not stat file %s\n", filename);
+            exit(1);
+        }
+        long file_size = file_stat.st_size;
+
+        // Open the file for reading
+        FILE *fp = fopen(filename, "rb");
+        if (fp == NULL) {
+            fprintf(stderr, "Error: could not open file %s\n", filename);
+            exit(1);
+        }
+
+        // Read magic number (4 bytes) - we're just skipping for stage 0
+        uint8_t magic[4];
+        fread(magic, 1, 4, fp);
+
+        // Read checksum (2 bytes, little-endian)
+        uint16_t checksum = read_le16(fp);
+        uint8_t checksum_low = checksum & 0xff;
+        uint8_t checksum_high = (checksum >> 8) & 0xff;
+
+        // Read pixel format (1 byte)
+        uint8_t pixel_format;
+        fread(&pixel_format, 1, 1, fp);
+
+        // Read compression (1 byte)
+        uint8_t compression;
+        fread(&compression, 1, 1, fp);
+
+        // Read width (4 bytes, little-endian)
+        uint32_t width = read_le32(fp);
+
+        // Read height (4 bytes, little-endian)
+        uint32_t height = read_le32(fp);
+
+        // Read pixel data offset (4 bytes, little-endian) - not needed for stage 0
+        // uint32_t pixel_offset = read_le32(fp);
+
+        // Close the file
+        fclose(fp);
+
+        // Print the information
+        printf("<%s>:\n", filename);
+        printf("File-size: %ld bytes\n", file_size);
+        printf("Checksum: %02x %02x\n", checksum_low, checksum_high);
+
+        const char *format_name = aif_pixel_format_name(pixel_format);
+        if (format_name != NULL) {
+            printf("Pixel format: %s\n", format_name);
+        } else {
+            printf("Pixel format: Invalid\n");
+        }
+
+        const char *compression_name = aif_compression_name(compression);
+        if (compression_name != NULL) {
+            printf("Compression: %s\n", compression_name);
+        } else {
+            printf("Compression: Invalid\n");
+        }
+
+        printf("Width: %u px\n", width);
+        printf("Height: %u px\n", height);
+    }
 }
 
 void stage2_brighten(int amount, const char *in_file, const char *out_file) {
