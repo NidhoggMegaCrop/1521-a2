@@ -44,10 +44,10 @@ void stage1_info(int n_files, const char **files) {
         uint8_t magic[4];
         fread(magic, 1, 4, fp);
 
-        // Read checksum (2 bytes, little-endian)
-        uint16_t checksum = read_le16(fp);
-        uint8_t checksum_low = checksum & 0xff;
-        uint8_t checksum_high = (checksum >> 8) & 0xff;
+        // Read checksum (2 bytes)
+        uint8_t checksum_byte1, checksum_byte2;
+        fread(&checksum_byte1, 1, 1, fp);
+        fread(&checksum_byte2, 1, 1, fp);
 
         // Read pixel format (1 byte)
         uint8_t pixel_format;
@@ -72,7 +72,7 @@ void stage1_info(int n_files, const char **files) {
         // Print the information
         printf("<%s>:\n", filename);
         printf("File-size: %ld bytes\n", file_size);
-        printf("Checksum: %02x %02x\n", checksum_low, checksum_high);
+        printf("Checksum: %02x %02x\n", checksum_byte1, checksum_byte2);
 
         const char *format_name = aif_pixel_format_name(pixel_format);
         if (format_name != NULL) {
