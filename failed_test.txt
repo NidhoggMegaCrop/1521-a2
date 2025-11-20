@@ -1,0 +1,248 @@
+1521 c_check aif-tools.c
+1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c 
+1521 compile-assign2 dcc -fsanitize=address -o aif-tools *.c 
+Test stage0-0 () - failed (Incorrect output)
+Your program produced these 7 lines of output:
+<2x2black.aif>:
+File-size: 32 bytes
+Checksum: e9 dd
+Pixel format: 8-bit RGB
+Compression: none
+Width: 2 px
+Height: 2 px
+
+The correct 7 lines of output for this test were:
+<2x2black.aif>:
+File-size: 32 bytes
+Checksum: dd e9
+Pixel format: 8-bit RGB
+Compression: none
+Width: 2 px
+Height: 2 px
+
+The difference between your output(-) and the correct output(+) is:
+...
+  File-size: 32 bytes
+- Checksum: e9 dd
+?             ---
+
++ Checksum: dd e9
+?           +++
+
+...
+You can reproduce this test by executing these commands:
+  1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c
+  SUBMISSION_BINARY=$(pwd)/aif-tools
+  1521 aif-examples
+  cd aif-examples
+  ${SUBMISSION_BINARY} info 2x2black.aif
+Test stage0-1 () - failed (Incorrect output)
+Your program produced these 7 lines of output:
+<2x2-black-gray8.aif>:
+File-size: 24 bytes
+Checksum: ea a7
+Pixel format: 8-bit grayscale
+Compression: none
+Width: 2 px
+Height: 2 px
+
+The correct 7 lines of output for this test were:
+<2x2-black-gray8.aif>:
+File-size: 24 bytes
+Checksum: a7 ea
+Pixel format: 8-bit grayscale
+Compression: none
+Width: 2 px
+Height: 2 px
+
+The difference between your output(-) and the correct output(+) is:
+...
+  File-size: 24 bytes
+- Checksum: ea a7
+?             ---
+
++ Checksum: a7 ea
+?           +++
+
+...
+You can reproduce this test by executing these commands:
+  1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c
+  SUBMISSION_BINARY=$(pwd)/aif-tools
+  1521 aif-examples
+  cd aif-examples
+  ${SUBMISSION_BINARY} info 2x2-black-gray8.aif
+Test stage0-2 () - failed (Incorrect output)
+Your program produced these 7 lines of output:
+<2x2-black-gray8-rle.aif>:
+File-size: 28 bytes
+Checksum: f3 8c
+Pixel format: 8-bit grayscale
+Compression: run-length encoding compressed
+Width: 2 px
+Height: 2 px
+
+The correct 7 lines of output for this test were:
+<2x2-black-gray8-rle.aif>:
+File-size: 28 bytes
+Checksum: 8c f3 
+Pixel format: 8-bit grayscale
+Compression: run-length encoding compressed
+Width: 2 px
+Height: 2 px
+
+The difference between your output(-) and the correct output(+) is:
+...
+  File-size: 28 bytes
+- Checksum: f3 8c
+?             ---
+
++ Checksum: 8c f3 
+...
+You can reproduce this test by executing these commands:
+  1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c
+  SUBMISSION_BINARY=$(pwd)/aif-tools
+  1521 aif-examples
+  cd aif-examples
+  ${SUBMISSION_BINARY} info 2x2-black-gray8-rle.aif
+Test stage0-4 () - failed (Incorrect output)
+Your program produced these 7 lines of output:
+<cat.aif>:
+File-size: 120020 bytes
+Checksum: 9c 7c
+Pixel format: 8-bit RGB
+Compression: none
+Width: 200 px
+Height: 200 px
+
+The correct 7 lines of output for this test were:
+<cat.aif>:
+File-size: 120020 bytes
+Checksum: 7c 9c
+Pixel format: 8-bit RGB
+Compression: none
+Width: 200 px
+Height: 200 px
+
+The difference between your output(-) and the correct output(+) is:
+...
+  File-size: 120020 bytes
+- Checksum: 9c 7c
+?             ---
+
++ Checksum: 7c 9c
+?           +++
+
+...
+You can reproduce this test by executing these commands:
+  1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c
+  SUBMISSION_BINARY=$(pwd)/aif-tools
+  1521 aif-examples
+  cd aif-examples
+  ${SUBMISSION_BINARY} info cat.aif
+Test stage0-5 () - failed (Incorrect output)
+Your program produced these 7 lines of output:
+<mr2.aif>:
+File-size: 750020 bytes
+Checksum: 52 4a
+Pixel format: 8-bit RGB
+Compression: none
+Width: 500 px
+Height: 500 px
+
+The correct 7 lines of output for this test were:
+<mr2.aif>:
+File-size: 750020 bytes
+Checksum: 4a 52
+Pixel format: 8-bit RGB
+Compression: none
+Width: 500 px
+Height: 500 px
+
+The difference between your output(-) and the correct output(+) is:
+...
+  File-size: 750020 bytes
+- Checksum: 52 4a
+?             ---
+
++ Checksum: 4a 52
+?           +++
+
+...
+You can reproduce this test by executing these commands:
+  1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c
+  SUBMISSION_BINARY=$(pwd)/aif-tools
+  1521 aif-examples
+  cd aif-examples
+  ${SUBMISSION_BINARY} info mr2.aif
+Test stage0-6 () - failed (Incorrect output)
+Your program produced these 7 lines of output:
+<screenshot.aif>:
+File-size: 2084150 bytes
+Checksum: 05 be
+Pixel format: 8-bit RGB
+Compression: none
+Width: 1245 px
+Height: 558 px
+
+The correct 7 lines of output for this test were:
+<screenshot.aif>:
+File-size: 2084150 bytes
+Checksum: be 05
+Pixel format: 8-bit RGB
+Compression: none
+Width: 1245 px
+Height: 558 px
+
+The difference between your output(-) and the correct output(+) is:
+...
+  File-size: 2084150 bytes
+- Checksum: 05 be
+?             ---
+
++ Checksum: be 05
+?           +++
+
+...
+You can reproduce this test by executing these commands:
+  1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c
+  SUBMISSION_BINARY=$(pwd)/aif-tools
+  1521 aif-examples
+  cd aif-examples
+  ${SUBMISSION_BINARY} info screenshot.aif
+Test stage0-7 () - failed (Incorrect output)
+Your program produced these 7 lines of output:
+<bridge.aif>:
+File-size: 1478432 bytes
+Checksum: af 02
+Pixel format: 8-bit RGB
+Compression: none
+Width: 702 px
+Height: 702 px
+
+The correct 7 lines of output for this test were:
+<bridge.aif>:
+File-size: 1478432 bytes
+Checksum: 02 af
+Pixel format: 8-bit RGB
+Compression: none
+Width: 702 px
+Height: 702 px
+
+The difference between your output(-) and the correct output(+) is:
+...
+  File-size: 1478432 bytes
+- Checksum: af 02
+?             ---
+
++ Checksum: 02 af
+?           +++
+
+...
+You can reproduce this test by executing these commands:
+  1521 compile-assign2 dcc -fsanitize=valgrind -o aif-tools *.c
+  SUBMISSION_BINARY=$(pwd)/aif-tools
+  1521 aif-examples
+  cd aif-examples
+  ${SUBMISSION_BINARY} info bridge.aif
+0 tests passed 7 tests failed
+Don't understand why test stage0-0 failed?  Get AI-generated help by running: autotest-help
